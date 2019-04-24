@@ -1,7 +1,11 @@
 package com.androidtutz.anushka.didemo;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
+
+import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
     SmartPhone smartPhone;
@@ -13,9 +17,5 @@ public class MainActivity extends AppCompatActivity {
         SmartPhoneComponent smartPhoneComponent=DaggerSmartPhoneComponent.create();
         smartPhone=smartPhoneComponent.getSmartPhone();
         smartPhone.makeACall();
-
-
-
-
     }
 }
