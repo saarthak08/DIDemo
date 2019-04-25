@@ -18,8 +18,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SmartPhoneComponent smartPhoneComponent=DaggerSmartPhoneComponent.create();
+        //SmartPhoneComponent smartPhoneComponent=DaggerSmartPhoneComponent.create();
         //smartPhone=smartPhoneComponent.getSmartPhone();
+        SmartPhoneComponent smartPhoneComponent=DaggerSmartPhoneComponent.builder().memoryCardModule(new MemoryCardModule(10))
+                .build();
         smartPhoneComponent.inject(this);
         smartPhone.makeACall();
         battery.showType();
