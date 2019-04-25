@@ -14,16 +14,16 @@ public class MainActivity extends AppCompatActivity {
      @Inject
      Battery battery;
 
+     @Inject
+     Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //SmartPhoneComponent smartPhoneComponent=DaggerSmartPhoneComponent.create();
-        //smartPhone=smartPhoneComponent.getSmartPhone();
-        SmartPhoneComponent smartPhoneComponent=DaggerSmartPhoneComponent.builder().memoryCardModule(new MemoryCardModule(10))
-                .build();
-        smartPhoneComponent.inject(this);
+        App.getApp().getSmartPhoneComponent().inject(this);
         smartPhone.makeACall();
         battery.showType();
+        Toast.makeText(context,"Hello, context is injected",Toast.LENGTH_SHORT).show();
     }
 }
